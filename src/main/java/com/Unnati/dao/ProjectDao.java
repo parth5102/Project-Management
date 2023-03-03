@@ -26,8 +26,8 @@ public class ProjectDao {
 	
 	public List<ProjectBean> getAllProject(){
 		String selectQuery = "select * from project where deleted=false ";
-		List<ProjectBean> list = stmt.query(selectQuery,new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
-		return list;
+		List<ProjectBean> list2 = stmt.query(selectQuery,new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
+		return list2;
 	}
 	
 	public void deleteProject(Integer projectId) {

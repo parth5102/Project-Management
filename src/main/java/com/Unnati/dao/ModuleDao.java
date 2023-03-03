@@ -13,7 +13,7 @@ public class ModuleDao {
 	JdbcTemplate stmt;
 
 	public void addModule(ModuleBean moduleBean) {
-		String insertQuery = "insert into module(moduleName,projectId,status,description,docURL,estimatedHours,totalUtilizedHours)"
+		String insertQuery = "insert into module(moduleName,projectId,statusId,description,docURL,estimatedHours,totalUtilizedHours)"
 				+ "values (?,?,?,?,?,?,?)";
 		stmt.update(insertQuery,moduleBean.getModuleName(),moduleBean.getProjectId(),moduleBean.getStatusId(),
 				moduleBean.getDescription(),moduleBean.getDocURL(),moduleBean.getEstimatedHours(),moduleBean.getTotalUtilizedHours());

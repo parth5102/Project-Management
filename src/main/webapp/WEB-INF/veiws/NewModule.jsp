@@ -13,16 +13,16 @@
 
 
 	<%
-	List<ProjectBean> list = (List<ProjectBean>)request.getAttribute("list");
+	List<ProjectBean> list2 = (List<ProjectBean>)request.getAttribute("list2");
 	%>
 	<%
 	List<StatusBean>  list1= (List<StatusBean>)request.getAttribute("list1");
 	%>
 	<form action="savemodule" method="post">
-		ModuleName : <input type="text" name="moduleName" /><br>
-		  ProjectId : <select name="projectId">
+		Module Name : <input type="text" name="moduleName" /><br>
+		  Project Name : <select name="projectId">
 			<%
-			for (ProjectBean pr : list) {
+			for (ProjectBean pr : list2) {
 			%>
 			<option value="<%=pr.getProjectId()%>">
 				<%=pr.getTitle()%></option>
@@ -39,7 +39,7 @@
 		<%
 		}
 		%>
-		</select>
+		</select><br>
 		Description : <input type="text" name="description"/><br>
 		Document URL :<input type="text" name="docURL"/><br>
 		Estimated Hours : <input type="number" name="estimatedHours"/><br>

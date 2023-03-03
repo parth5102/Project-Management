@@ -47,8 +47,8 @@ public class ProjectController {
 	
 	@GetMapping("/listproject")
 	public String listProject(Model model) {
-		List<ProjectBean> list = projectDao.getAllProject();
-		model.addAttribute("list",list);
+		List<ProjectBean> list2 = projectDao.getAllProject();
+		model.addAttribute("list2",list2);
 		return "ListProject";
 	}
 	

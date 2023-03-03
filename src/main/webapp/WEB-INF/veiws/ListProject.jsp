@@ -11,7 +11,7 @@
 <body>
 
 <%
-List<ProjectBean> list =  (List<ProjectBean>)request.getAttribute("list");
+List<ProjectBean> list2 =  (List<ProjectBean>)request.getAttribute("list2");
 %>
  		<table border="1">
  		<tr>
@@ -26,7 +26,7 @@ List<ProjectBean> list =  (List<ProjectBean>)request.getAttribute("list");
  			<th>Status</th>
  			<th>deleted</th>
  			</tr>
- 		<% for(ProjectBean tc:list){ %>
+ 		<% for(ProjectBean tc:list2){ %>
  		<tr>
 			<td><%=tc.getProjectId()%></td>
 			<td><%=tc.getTitle()%></td>

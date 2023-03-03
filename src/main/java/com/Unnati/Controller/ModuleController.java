@@ -31,9 +31,9 @@ public class ModuleController {
 	@GetMapping("/newmodule")
 	public String newModule(Model model) {
 		List<StatusBean> list1 = statusDao.getAllStatus();
-		model.addAttribute(list1);
-		List<ProjectBean> list = projectDao.getAllProject();
-		model.addAttribute(list);
+		model.addAttribute("list1",list1);
+		List<ProjectBean> list2 = projectDao.getAllProject();
+		model.addAttribute("list2",list2);
 		return "NewModule";
 	}
 	
