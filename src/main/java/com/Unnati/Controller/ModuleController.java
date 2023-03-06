@@ -44,6 +44,13 @@ public class ModuleController {
 		
 	}
 	
+	@GetMapping("/listmodule")
+	public String listModuel(Model model) {
+		List<ModuleBean> list3 = moduleDao.getAllModule();
+		model.addAttribute("list3",list3);
+		return "ListModule";
+	}
+	
 	
 	
 }

@@ -18,27 +18,29 @@ List<ProjectBean> list2 =  (List<ProjectBean>)request.getAttribute("list2");
  			<th>Project Id</th>
  			<th>Project Title</th>
  			<th>Description</th>
- 			<th>Technology Id</th>
+ 			<th>Technology Name</th>
  			<th>Estimated Hours</th>
  			<th>Start Date</th>
  			<th>Completion Date</th>
  			<th>Utilized Hours</th>
  			<th>Status</th>
- 			<th>deleted</th>
+ 			<th>Action</th>
  			</tr>
  		<% for(ProjectBean tc:list2){ %>
  		<tr>
 			<td><%=tc.getProjectId()%></td>
 			<td><%=tc.getTitle()%></td>
 			<td><%=tc.getDescription()%></td>
-			<td><%=tc.getTechnologyId()%></td>
+			<th><%=tc.getTechnologyName() %></th>
 			<td><%=tc.getEstimatedHours()%></td>
 			<td><%=tc.getStartDate()%></td>
 			<td><%=tc.getComplitionDate()%></td>
 			<td><%=tc.getUtilizedHours()%></td>
-			<td><%=tc.getStatusId() %></td>
+			<td><%=tc.getStatus()%></td>
 			<td><%=tc.isDeleted()%></td>
-			<td><a href="deleteproject/<%=tc.getProjectId()%>">Deleted</a></td>
+			<td><a href="deleteproject/<%=tc.getProjectId()%>">Deleted</a>|
+			<a href="viewproject/<%=tc.getProjectId()%>">View</a>
+			</td>
  		</tr>
  		<%} %>
  		

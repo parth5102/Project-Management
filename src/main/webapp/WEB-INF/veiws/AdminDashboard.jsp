@@ -22,7 +22,11 @@
 	<br>
 	<br>
 	<a href="newmodule">Add new Module</a>
-
+	<br>
+	<br>
+	<a href="listmodule">List Module</a>
+	<br>
+	<br>
 
 </body>
 </html>

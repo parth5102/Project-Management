@@ -25,7 +25,9 @@ public class ProjectDao {
 	}
 	
 	public List<ProjectBean> getAllProject(){
-		String selectQuery = "select * from project where deleted=false ";
+		String selectQuery = "select project.projectId,project.title,project.description,technology.technologyName,project.estimatedHours,project.startDate,"
+				+ "project.complitionDate,project.utilizedHours,project.deleted,status.status from project ,technology  ,status "
+				+ "where project.deleted = false and project.technologyId=technology.technologyId and project.statusId=status.statusId";
 		List<ProjectBean> list2 = stmt.query(selectQuery,new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
 		return list2;
 	}
@@ -33,6 +35,20 @@ public class ProjectDao {
 	public void deleteProject(Integer projectId) {
 		String updateQuery="update project set deleted = true where projectId=?";
 		stmt.update(updateQuery,projectId);
+	}
+	
+	public ProjectBean getProjectById(Integer projectId) {
+		ProjectBean projectBean = null;
+		try {
+			projectBean = stmt.queryForObject("select * from project where projectId=?" ,
+					new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class),new Object[] {projectId});
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+			System.out.println("Error in projectDao");
+			
+		}
+		return projectBean;
 	}
 	
 }

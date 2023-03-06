@@ -58,4 +58,12 @@ public class ProjectController {
 		return "redirect:/listproject";
 	}
 	
+	@GetMapping("/viewproject/{projectId}")
+	public String viewProject(@PathVariable("projectId")Integer projectId,Model model) {
+		ProjectBean projectBean = projectDao.getProjectById(projectId);
+		model.addAttribute("projectBean",projectBean);
+		return "ViewProject";
+		
+	}
+	
 }

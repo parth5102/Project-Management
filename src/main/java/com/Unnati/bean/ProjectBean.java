@@ -5,11 +5,13 @@ public class ProjectBean {
 	private String title;
 	private String description;
 	private Integer technologyId;
+	private String technologyName;
 	private Integer estimatedHours;
 	private String startDate;
 	private String complitionDate;
 	private Integer utilizedHours;
 	private Integer statusId;
+	private String Status;
 	private boolean deleted;
 	public Integer getProjectId() {
 		return projectId;
@@ -29,13 +31,17 @@ public class ProjectBean {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 	public Integer getTechnologyId() {
 		return technologyId;
 	}
 	public void setTechnologyId(Integer technologyId) {
 		this.technologyId = technologyId;
+	}
+	public String getTechnologyName() {
+		return technologyName;
+	}
+	public void setTechnologyName(String technologyName) {
+		this.technologyName = technologyName;
 	}
 	public Integer getEstimatedHours() {
 		return estimatedHours;
@@ -66,6 +72,12 @@ public class ProjectBean {
 	}
 	public void setStatusId(Integer statusId) {
 		this.statusId = statusId;
+	}
+	public String getStatus() {
+		return Status;
+	}
+	public void setStatus(String status) {
+		Status = status;
 	}
 	public boolean isDeleted() {
 		return deleted;

@@ -4,7 +4,9 @@ public class ModuleBean {
 	private Integer moduleId;
 	private String moduleName;
 	private Integer projectId;
+	private String title;
 	private Integer statusId;
+	private String status;
 	private String description;
 	private String docURL;
 	private Integer estimatedHours;
@@ -27,11 +29,23 @@ public class ModuleBean {
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public Integer getStatusId() {
 		return statusId;
 	}
 	public void setStatusId(Integer statusId) {
 		this.statusId = statusId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getDescription() {
 		return description;
