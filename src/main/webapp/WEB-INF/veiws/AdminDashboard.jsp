@@ -27,6 +27,13 @@
 	<a href="listmodule">List Module</a>
 	<br>
 	<br>
+	<a href="newtask">New Task</a>
+	<br>
+	<br>
+	<a href="listtask">List Task</a>
+	<br>
+	<br>
+	<a href="logout">LogOut</a>
 
 </body>
 </html>

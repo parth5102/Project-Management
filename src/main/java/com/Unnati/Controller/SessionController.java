@@ -1,5 +1,9 @@
 package com.Unnati.Controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,13 +57,23 @@ public class SessionController {
 		return "Login";
 	}
 	@PostMapping("/authentication")
-	public String authentication(LoginBean login,Model model ) {
+	public String authentication(LoginBean login,Model model,HttpServletResponse response,HttpSession session) {
 		UserBean userBean=userDao.authenticateUser(login);
 		if(userBean == null) {
 			model.addAttribute("error","Invalid Credentials");
 			return "Login";
 		}
 		else {
+			
+			Cookie c1 = new Cookie("userId",userBean.getUserId()+"");
+			Cookie c2 = new Cookie("firstName",userBean.getFirstName());
+			// cookie view			
+			response.addCookie(c1);
+			response.addCookie(c2);
+			// session view
+			session.setAttribute("userId",userBean.getUserId());
+			session.setMaxInactiveInterval(60*5);
+			
 			if(userBean.getRole()==1) {
 				return "redirect:/admindashboard";
 			}
@@ -117,5 +131,12 @@ public class SessionController {
 			userDao.updateMyPassword(upBean);
 			return "Login";
 		}
+	
 	}
+		@GetMapping("/logout")
+		public String logout(HttpSession session) {
+			session.invalidate();
+		return "redirect:/login";	
+		}
+	
 }

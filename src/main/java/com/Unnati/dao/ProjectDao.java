@@ -25,9 +25,9 @@ public class ProjectDao {
 	}
 	
 	public List<ProjectBean> getAllProject(){
-		String selectQuery = "select project.projectId,project.title,project.description,technology.technologyName,project.estimatedHours,project.startDate,"
-				+ "project.complitionDate,project.utilizedHours,project.deleted,status.status from project ,technology  ,status "
-				+ "where project.deleted = false and project.technologyId=technology.technologyId and project.statusId=status.statusId";
+		String selectQuery = "select p.projectId,p.title,p.description,t.technologyName,p.estimatedHours,p.startDate,"
+				+ "p.complitionDate,p.utilizedHours,p.deleted,s.status from project p ,technology t,status s"
+				+ " where p.deleted = false and p.technologyId=t.technologyId and p.statusId=s.statusId";
 		List<ProjectBean> list2 = stmt.query(selectQuery,new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
 		return list2;
 	}
@@ -40,7 +40,9 @@ public class ProjectDao {
 	public ProjectBean getProjectById(Integer projectId) {
 		ProjectBean projectBean = null;
 		try {
-			projectBean = stmt.queryForObject("select * from project where projectId=?" ,
+			projectBean = stmt.queryForObject("select project.projectId,project.title,project.description,technology.technologyName,project.estimatedHours,project.startDate,"
+					+ "project.complitionDate,project.utilizedHours,project.deleted,status.status from project ,technology  ,status "
+					+  "where project.projectId = ? and project.technologyId=technology.technologyId and project.statusId=status.statusId" ,
 					new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class),new Object[] {projectId});
 		}
 		catch(Exception e){
