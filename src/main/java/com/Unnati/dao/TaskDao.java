@@ -23,8 +23,11 @@ public class TaskDao {
 	}
 	
 	public List<TaskBean> getAllTask() {
-		String selectQuery=" select t.taskId,m.moduleName,p.title,s.status,t.estimatedHours,t.totalUtilizedHours,t.docURL,t.description from task t,project p,status s,module m where t.moduleId=m.moduleId and t.projectId=p.projectId and t.statusId=s.statusId";
+		String selectQuery=" select t.taskId,m.moduleName,p.title,s.status,t.estimatedHours,t.totalUtilizedHours,t.docURL,"
+				+ "t.description from task t,project p,status s,module m where t.moduleId=m.moduleId and t.projectId=p.projectId"
+				+ " and t.statusId=s.statusId";
 		List<TaskBean> list4 = stmt.query(selectQuery,new BeanPropertyRowMapper<TaskBean>(TaskBean.class));
 		return list4;
 	}
 }
+ 

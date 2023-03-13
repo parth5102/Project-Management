@@ -1,6 +1,8 @@
 package com.Unnati.dao;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -77,6 +79,13 @@ public class UserDao {
 					
 			return null;	
 			}
+			
+		}
+		
+		public List<UserBean> getAllUser(){
+			String selectQuery = "select * from users";
+			List<UserBean> list5 = stmt.query(selectQuery,new BeanPropertyRowMapper<UserBean>(UserBean.class));
+			return list5;
 			
 		}
 

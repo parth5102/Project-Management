@@ -19,6 +19,7 @@ List<TaskBean> list4 =  (List<TaskBean>)request.getAttribute("list4");
  		<tr>
  			<th>Task Id</th>
  			<th>Module Title</th>
+ 			
  			<th>Title</th>
  			<th>Status</th>
  			<th>Estimated Hours</th>
@@ -29,9 +30,9 @@ List<TaskBean> list4 =  (List<TaskBean>)request.getAttribute("list4");
  		<% for(TaskBean tk:list4){ %>
  		<tr>
 			<td><%=tk.getTaskId()%></td>
-			<td><%=tk.getModuleId()%></td>
-			<td><%=tk.getProjectId()%></td>
-			<th><%=tk.getStatusId() %></th>
+			<td><%=tk.getModuleName()%></td>
+			<td><%=tk.getTitle()%></td>
+			<th><%=tk.getStatus() %></th>
 			<td><%=tk.getEstimatedHours()%></td>
 			<td><%=tk.getTotalUtilizedHours()%></td>
 			<td><%=tk.getDocURL()%></td>
