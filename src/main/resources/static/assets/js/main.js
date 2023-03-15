@@ -301,6 +301,7 @@
    */
   const datatables = select('.datatable', true)
   datatables.forEach(datatable => {
+  	console.log(datatable);
     new simpleDatatables.DataTable(datatable);
   })
 
