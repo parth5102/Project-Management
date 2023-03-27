@@ -5,40 +5,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<jsp:include page="AllHeader.jsp"></jsp:include>
+<style type="text/css">
+	.error{
+		color: red;
+	}
 
-  <title>Project Management ||  SignUp</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+</style>
 </head>
 
 <body>
@@ -67,39 +40,41 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate action="saveuser" method="post">
+                  <form class="row g-3" action="saveuser" method="post" id="myform">
                     <div class="col-12">
                       <label for="firstName" class="form-label">First Name</label>
-                      <input type="text" name="firstName" class="form-control" id="yourfirstName" required>
-                      <div class="invalid-feedback">Please, enter First Name!</div>
+                      <input type="text" name="firstName" class="form-control" id="firstName" >
+                      <span id="firstNameError" class="error"></span>
                     </div>
                     
                     <div class="col-12">
                       <label for="yourName" class="form-label">Last Name</label>
-                      <input type="text" name="lastName" class="form-control" id="yourlastName" required>
-                      <div class="invalid-feedback">Please, enter Last name!</div>
+                      <input type="text" name="lastName" class="form-control" id="lastName" >
+                      <span id="lastNameError" class="error"></span>
+                      
                     </div>
 
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Your Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Please enter a valid Email Address!</div>
+                      <input type="email" name="email" class="form-control" id="email">
+                      <span id="emailError" class="error"></span>
+                      <div style="color: red">${error}</div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <input type="password" name="password" class="form-control" id="password" >
+                      <span id="passwordError" class="error"></span>
                     </div>
                     
                       <div class="col-12">
                       <label for="yourPassword" class="form-label">Re-Enter Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <input type="password" name="conPassword" class="form-control" id="conPassword" >
+                      <span id="conPasswordError" class="error"></span>
                     </div>
 
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" type="button" onclick="validation()">Create Account</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="login">Log in</a></p>
@@ -134,6 +109,107 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  <script type="text/javascript">
+  
+  function validation(){
+	  
+	isError = false;
+	firstName = document.getElementById("firstName");
+	firstNameError = document.getElementById("firstNameError");
+	firstNameRegex = /^[a-zA-Z]+$/;
+	
+	lastName = document.getElementById("lastName");
+	lastNameError = document.getElementById("lastNameError");
+	lastNameRegex = /^[a-zA-Z]+$/;
+	
+	email = document.getElementById("email");
+	emailError = document.getElementById("emailError");
+	emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-]{2,3}$/;
+	
+	password = document.getElementById("password");
+	passwordError = document.getElementById("passwordError");
+	passwordRegex = /^[a-zA-Z0-9]+$/;
+	
+	conPassword = document.getElementById("conPassword");
+	conPasswordError = document.getElementById("conPasswordError");
+	
+	if (firstName.value == '') {
+        firstNameError.innerHTML = "Please Enter First Name "
+        isError = true;
+    } else {
+        if (firstNameRegex.test(firstName.value) == false) {
+            firstNameError.innerHTML = "Please Enter Valid First Name";
+            isError = true;
+            
+        } else {
+            firstNameError.innerHTML = "";
+
+        }
+    }
+	
+	if (lastName.value == '') {
+        lastNameError.innerHTML = "Please Enter Last Name"
+        	isError = true;
+    } else {
+        if (lastNameRegex.test(lastName.value) == false) {
+            lastNameError.innerHTML = "Please Enter Valid Last Name";
+            isError = true;
+            
+        } else {
+            lastNameError.innerHTML = "";
+
+        }
+    }
+	
+	 if (email.value == '') {
+         emailError.innerHTML = "Please Enter Email"
+        	 isError = true;
+	 } else {
+         if (emailRegex.test(email.value) == false) {
+             emailError.innerHTML = "Please Enter Valid Email"
+            	 isError = true;
+         } else {
+             emailError.innerHTML = ""
+         }
+     }
+	 
+	 if (password.value == '') {
+         passwordError.innerHTML = "Please Enter password"
+        	 isError = true;
+     } else {
+         if (passwordRegex.test(password.value) == false) {
+             passwordError.innerHTML = "Please Enter Valid Password"
+            	 isError = true;
+         } else {
+             passwordError.innerHTML = ""
+         }
+     }
+	 
+	 if (conPassword.value == '') {
+         conPasswordError.innerHTML = "Please Enter Confirm Password"
+        	 isError = true;
+	 } else {
+         if (conPassword.value != password.value) {
+             conPasswordError.innerHTML = "Please Re-Enter Confirm Password"
+            	 isError = true;
+         } else {
+             conPasswordError.innerHTML = ""
+         }
+     }
+	
+			if(isError==false){
+				myform = document.getElementById("myform");
+				myform.submit();
+			}
+			
+  }
+  
+  
+  
+  </script>
+  
+  
 
 </body>
 

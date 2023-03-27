@@ -34,8 +34,8 @@
 							<h5 class="card-title">DatatTables</h5>
 							
 
-							
-									<table id="projectTable" class="datatable">
+									
+									<table id="projectTable" class="datatable" border="1">
 										<thead>
 											<tr>
 												<th >Project Title</th>
@@ -46,6 +46,7 @@
 												<th scope="col">Completion</th>
 												<th scope="col">Utilized</th>
 												<th scope="col">Status</th>
+												<th scope="col">Action</th>
 											</tr>
 										</thead>
 										<%
@@ -62,10 +63,16 @@
 												<td><%=tc.getComplitionDate()%></td>
 												<td><%=tc.getUtilizedHours()%></td>
 												<td><%=tc.getStatus()%></td>
+												<td><a href="viewproject?projectId=<%=tc.getProjectId()%>">View</a></td>
 											</tr>
 											<%} %>
 										</tbody>
 									</table>
+									<div class="icon" align="right">
+										<a href="newproject"><i class="bi bi-plus-circle-fill"></i>
+										</a>
+										<div class="label">Add New Project</div>
+									</div>
 								</div>
 								
 							</div>
@@ -77,7 +84,7 @@
 		</section>
 
 	</main>
-	
+
  <jsp:include page="AllJs.jsp"></jsp:include>
   
 	

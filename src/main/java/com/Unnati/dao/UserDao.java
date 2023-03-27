@@ -56,7 +56,8 @@ public class UserDao {
 		}
 		return null;
 	}
-		public void updateOtp(String email,String otp) {
+
+	public void updateOtp(String email,String otp) {
 			String updateotpQuery="update users set otp=? where email=?";
 			stmt.update(updateotpQuery,otp,email);
 		}
@@ -88,5 +89,20 @@ public class UserDao {
 			return list5;
 			
 		}
-
+		
+		public UserBean getUserByEmail(UserBean userBean) {
+			try {
+				
+				String selectEmailQuery = "select * from users where email=?";
+				UserBean user = stmt.queryForObject(selectEmailQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class)
+					,new Object[] {userBean.getEmail()}	);
+				return user;
+				
+			} catch (Exception e) {
+			System.out.println(e.getMessage());
+					
+				
+			}
+			return null;
+		}
 }

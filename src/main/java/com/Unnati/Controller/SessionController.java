@@ -39,13 +39,18 @@ public class SessionController {
 
 	// jsp input process
 	@PostMapping("/saveuser")
-	public String saveUser(UserBean user) {
+	public String saveUser(UserBean user , Model model) {
 		System.out.println(user.getFirstName());
-		System.out.println(user.getLastName());
 		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
-		userDao.insertUser(user);
-		return "Login";
+		UserBean user1 = userDao.getUserByEmail(user);
+		if(user1 ==null) {
+			userDao.insertUser(user);
+			return "Login";
+			
+		}else{
+			model.addAttribute("error","Email Adress Alredy Exist");
+			return"Signup";
+		}
 	}
 	
 	
@@ -72,6 +77,7 @@ public class SessionController {
 			response.addCookie(c2);
 			// session view
 			session.setAttribute("userId",userBean.getUserId());
+			session.setAttribute("user", userBean);
 			session.setMaxInactiveInterval(60*5);
 			
 			if(userBean.getRole()==1) {

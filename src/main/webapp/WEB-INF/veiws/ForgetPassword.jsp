@@ -103,6 +103,7 @@
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Send OTP</button>
                     </div>
+
                     <div class="col-12">
                       <p class="small mb-0">Back To Login  <a href="login">Login</a></p>
                     </div>

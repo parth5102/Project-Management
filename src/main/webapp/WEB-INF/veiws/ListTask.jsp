@@ -33,49 +33,64 @@
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">DataTables</h5>
-							
 
-						
-									<table id="taskTable" class="datatable">
+
+
+							<table id="taskTable" class="datatable" border="1">
+								<%
+								List<TaskBean> list4 = (List<TaskBean>) request.getAttribute("list4");
+								%>
+								<thead>
+									<tr>
+										<th scope="col">Module Title</th>
+										<th scope="col">Title</th>
+										<th scope="col">status</th>
+										<th scope="col">Estimated Hours</th>
+										<th scope="col">Total Utilized Hours</th>
+										<th scope="col">Doc URL</th>
+										<th scope="col">Description</th>
+									</tr>
+								</thead>
+								<%
+								for (TaskBean tk : list4) {
+								%>
+
+
+								<tbody>
+									<tr data-index="0">
+										<td><%=tk.getModuleName()%></td>
+										<td><%=tk.getTitle()%></td>
+										<td><%=tk.getStatus()%></td>
+										<td><%=tk.getEstimatedHours()%></td>
+										<td><%=tk.getTotalUtilizedHours()%></td>
+										<td><%=tk.getDocURL()%></td>
+										<td><%=tk.getDescription()%></td>
+									</tr>
 									<%
-List<TaskBean> list4 =  (List<TaskBean>)request.getAttribute("list4");
-%>
-										<thead>
-											<tr>
-												<th scope="col">Task Id</th>
-												<th scope="col">Module Title</th>
-												<th scope="col">Title</th>
-												<th scope="col">status</th>
-											</tr>
-										</thead>
-										<% for(TaskBean tk:list4){ %>
- 	
-										
-										<tbody>
-											<tr data-index="0">
-												<td><%=tk.getTaskId()%></td>
-												<td><%=tk.getModuleName()%></td>
-												<td><%=tk.getTitle()%></td>
-												<td><%=tk.getStatus()%></td>
-											</tr>
-										<%} %>
-										</tbody>
-									</table>
-								</div>
-								
+									}
+									%>
+								</tbody>
+							</table>
+							<div class="icon" align="right">
+								<a href="newtask"><i class="bi bi-plus-circle-fill"></i> </a>
+								<div class="label">Add New Task</div>
 							</div>
 
-							<!-- Table with stripped rows -->
-
 						</div>
+
 					</div>
+
+					<!-- Table with stripped rows -->
+
+				</div>
+			</div>
 
 		</section>
 
 	</main>
 	<!-- End #main -->
 
-<jsp:include page="AllJs.jsp"></jsp:include>
+	<jsp:include page="AllJs.jsp"></jsp:include>
 
 </body>
 </html>

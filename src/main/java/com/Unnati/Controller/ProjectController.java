@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Unnati.bean.ProjectBean;
 import com.Unnati.bean.StatusBean;
@@ -58,12 +59,11 @@ public class ProjectController {
 		return "redirect:/listproject";
 	}
 	
-	@GetMapping("/viewproject/{projectId}")
-	public String viewProject(@PathVariable("projectId")Integer projectId,Model model) {
+	@GetMapping("/viewproject")
+	public String viewProject(@RequestParam("projectId")Integer projectId,Model model) {
 		ProjectBean projectBean = projectDao.getProjectById(projectId);
 		model.addAttribute("projectBean",projectBean);
 		return "ViewProject";
-		
 	}
 	
 }

@@ -32,9 +32,9 @@
 
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title">Datatables</h5>
+							<h5 class="card-title">DataTables</h5>
 							
-									<table id="moduleTable" class="datatable">
+									<table id="moduleTable" class="datatable" border="1">
 										<thead>
 											<tr>
 												<th scope="col">Module Id</th>
@@ -69,6 +69,12 @@
 											%>
 										</tbody>
 									</table>
+									<div class="icon" align="right">
+										<a href="newmodule"><i class="bi bi-plus-circle-fill"></i>
+										</a>
+										<div class="label">Add New Module</div>
+									</div>
+									
 								</div>
 								
 							</div>
