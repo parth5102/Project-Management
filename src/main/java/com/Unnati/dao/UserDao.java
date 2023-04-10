@@ -24,7 +24,7 @@ public class UserDao {
 
 		String insertQuery = "insert into users(firstName,lastName,email,password,role,deleted) values(?,?,?,?,?,?)";
 		stmt.update(insertQuery, userBean.getFirstName(), userBean.getLastName(), userBean.getEmail(),
-				userBean.getPassword(), 2,false);
+				userBean.getPassword(), userBean.getRole(),false);
 	}
 
 	public UserBean authenticateUser(LoginBean loginBean) {
@@ -105,4 +105,5 @@ public class UserDao {
 			}
 			return null;
 		}
+		
 }

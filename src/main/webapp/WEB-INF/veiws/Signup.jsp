@@ -27,7 +27,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">NiceA</span>
+                  <span class="d-none d-lg-block">Project Management</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -60,6 +60,12 @@
                       <span id="emailError" class="error"></span>
                       <div style="color: red">${error}</div>
                     </div>
+                    
+                    <div class="col-12">
+                      <label for="role" class="form-label">Role </label>
+                      <input type="number" name="role" class="form-control" id="role">
+                      <span id="roleError" class="error"></span>
+                    </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
@@ -74,11 +80,12 @@
                     </div>
 
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="button" onclick="validation()">Create Account</button>
+                      <button class="btn btn-primary w-100" type="button" onclick="validation()">Add User </button>
                     </div>
+                    
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="login">Log in</a></p>
-                    </div>
+                      <p class="small mb-0"><a href="listusers">List Users</a></p>
+                    </div> 
                   </form>
 
                 </div>
@@ -127,10 +134,14 @@
 	emailError = document.getElementById("emailError");
 	emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-]{2,3}$/;
 	
+	role = document.getElementById("role");
+	roleError = document.getElementById("roleError");
+	roleRegex = /^[1-3]+$/;
+	
 	password = document.getElementById("password");
 	passwordError = document.getElementById("passwordError");
 	passwordRegex = /^[a-zA-Z0-9]+$/;
-	
+		
 	conPassword = document.getElementById("conPassword");
 	conPasswordError = document.getElementById("conPasswordError");
 	
@@ -174,7 +185,19 @@
          }
      }
 	 
-	 if (password.value == '') {
+	 if (role.value == '') {
+         roleError.innerHTML = "Please Enter Role"
+        	 isError = true;
+     } else {
+         if (roleRegex.test(role.value) == false) {
+             roleError.innerHTML = "Please Enter Valid Role"
+            	 isError = true;
+         } else {
+             roleError.innerHTML = ""
+         }
+     }
+	 
+	if (password.value == '') {
          passwordError.innerHTML = "Please Enter password"
         	 isError = true;
      } else {
@@ -204,6 +227,8 @@
 			}
 			
   }
+  
+  
   
   
   

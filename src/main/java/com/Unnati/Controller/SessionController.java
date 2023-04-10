@@ -1,5 +1,7 @@
 package com.Unnati.Controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -72,22 +74,25 @@ public class SessionController {
 			
 			Cookie c1 = new Cookie("userId",userBean.getUserId()+"");
 			Cookie c2 = new Cookie("firstName",userBean.getFirstName());
+			Cookie c3 = new Cookie("role", userBean.getRole()+"");
 			// cookie view			
 			response.addCookie(c1);
 			response.addCookie(c2);
+			response.addCookie(c3);
 			// session view
 			session.setAttribute("userId",userBean.getUserId());
+			session.setAttribute("role", userBean.getRole());
 			session.setAttribute("user", userBean);
 			session.setMaxInactiveInterval(60*5);
-			
+		     
 			if(userBean.getRole()==1) {
 				return "redirect:/admindashboard";
 			}
 			else if(userBean.getRole()==2) {
-				return "redirect:/developerdashboard";
+				return "redirect:/managerdashboard";
 			}
 			else if(userBean.getRole()==3) {
-				return "redirect:/home";
+				return "redirect:/developerdashboard";
 			}
 			else {
 				return "redirect:/signup";
@@ -144,5 +149,12 @@ public class SessionController {
 			session.invalidate();
 		return "redirect:/login";	
 		}
-	
+		
+		@GetMapping("/listusers")
+		public String listUsers(Model model) {
+			List<UserBean> list5 = userDao.getAllUser();
+			model.addAttribute("list5",list5);
+			return "ListUsers";
+		}
+		
 }

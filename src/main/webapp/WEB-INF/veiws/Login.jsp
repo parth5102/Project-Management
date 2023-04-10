@@ -21,7 +21,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">NiceAdmi</span>
+                  <span class="d-none d-lg-block">Project Management</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -60,9 +60,9 @@
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
-                    <div class="col-12">
+                    <!-- <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="signup">Create an account</a></p>
-                    </div>
+                    </div> -->
                    <div class="col-12">
                       <p class="small mb-0">I'm Having Trouble Reset?  <a href="forgetpassword">Forget Password</a></p>
                     </div>
@@ -96,6 +96,26 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <link
+		href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+		integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<script>
+  
+	
+	<%if (request.getAttribute("error") != null) {%>
+	toastr
+	.error("<%=request.getAttribute("error")%>")
+	<%}%>
+	
+	</script>
+  
+  
 
 </body>
 

@@ -30,4 +30,18 @@ public class ModuleDao {
 		return list3;
 	}
 	
+	
+	public ModuleBean getModuleById(Integer moduleId) {
+		ModuleBean moduleBean = null;
+		try {
+		  moduleBean = stmt.queryForObject("select moduleId ,docURL from module where moduleId=?" ,
+					new BeanPropertyRowMapper<ModuleBean>(ModuleBean.class),new Object[] {moduleId});
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+			System.out.println("Error in projectDao");
+			
+		}
+		return moduleBean;
+	}
 }

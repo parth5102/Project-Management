@@ -1,5 +1,7 @@
 package com.Unnati.bean;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ModuleBean {
 	private Integer moduleId;
 	private String moduleName;
@@ -8,6 +10,7 @@ public class ModuleBean {
 	private Integer statusId;
 	private String status;
 	private String description;
+	private MultipartFile docFile;
 	private String docURL;
 	private Integer estimatedHours;
 	private Integer totalUtilizedHours;
@@ -52,6 +55,12 @@ public class ModuleBean {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public MultipartFile getDocFile() {
+		return docFile;
+	}
+	public void setDocFile(MultipartFile docFile) {
+		this.docFile = docFile;
 	}
 	public String getDocURL() {
 		return docURL;

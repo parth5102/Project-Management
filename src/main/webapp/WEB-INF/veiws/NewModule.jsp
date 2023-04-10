@@ -38,7 +38,7 @@
 	%>
 	
 
-                  <form class="row g-3 needs-validation" novalidate action="savemodule" method="post">
+                  <form class="row g-3 needs-validation" novalidate action="savemodule" method="post" enctype="multipart/form-data">
 
 
 
@@ -74,7 +74,7 @@
                     
                       <div class="col-12">
                       <label class="form-label">Document URL</label>
-                      <input type="text" name="docURL" class="form-control"  required>
+                      <input type="file" name="docFile" class="form-control"  required>
                       <div class="invalid-feedback">Please enter Document URL!</div>
                     </div>
                     

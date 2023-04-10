@@ -41,4 +41,16 @@ public class Project_UserController {
 		project_UserDao.addProject_User(project_UserBean);
 		return "redirect:/addproject_user";
 	}
+	
+	@GetMapping("/listproject_user")
+	public String listProject(Model model) {
+		List<Project_UserBean> list6 = project_UserDao.getAllProject_User();
+		model.addAttribute("list6",list6);
+		List<ProjectBean> list2 = projectDao.getAllProject();
+		model.addAttribute("list2",list2);
+		List<UserBean> list5 = userDao.getAllUser();
+		model.addAttribute("list5",list5);
+		return "ListProject_User";
+	}
+	
 }

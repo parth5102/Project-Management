@@ -9,6 +9,7 @@ public class UserBean {
 	private Integer role;
 	private String otp; 
 	private boolean deleted;
+	private String imageurl;
 	public Integer getUserId() {
 		return userId;
 	}
@@ -57,6 +58,12 @@ public class UserBean {
 	}
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
+	}
+	public String getImageurl() {
+		return imageurl;
+	}
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
 	}
 	
 	

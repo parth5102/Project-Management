@@ -42,9 +42,9 @@
 												<th scope="col">Project Id</th>
 												<th scope="col">Status Id</th>
 												<th scope="col">Description</th>
-												<th scope="col">Document URL</th>
 												<th scope="col">Estimated Hours</th>
 												<th scope="col">Utilized Hours</th>
+												<th scope="col">Action</th>
 											</tr>
 										</thead>
 										<%
@@ -60,9 +60,10 @@
 												<td><%=md.getTitle()%></td>
 												<td><%=md.getStatus()%></td>
 												<td><%=md.getDescription()%></td>
-												<td><%=md.getDocURL()%></td>
 												<td><%=md.getEstimatedHours()%></td>
 												<td><%=md.getTotalUtilizedHours()%></td>
+													<td><a href="viewmodule?moduleId=<%=md.getModuleId()%>">View</a></td>
+
 											</tr>
 											<%
 											}
