@@ -76,7 +76,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="otpforforgetpassword" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">NiceAdmi</span>
+                  <span class="d-none d-lg-block">Project Management</span>
                 </a>
               </div>
 

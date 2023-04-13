@@ -95,11 +95,6 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>General Tables</span>
-            </a>
-          </li>
-          <li>
             <a href="listtechnology">
               <i class="bi bi-circle"></i><span>List Technology</span>
             </a>
@@ -130,12 +125,7 @@
       <li class="nav-heading">Pages</li>
 
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="signup">
-          <i class="bi bi-card-list"></i>
-          <span>Add User</span>
-        </a>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="logout">
           <i class="bi bi-box-arrow-left"></i>

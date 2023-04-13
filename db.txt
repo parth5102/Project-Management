@@ -1,0 +1,104 @@
+create table users(
+userId integer primary key auto_increment,
+firstName varchar(30),
+lastName varchar(30),
+email varchar(50),
+password varchar(80),
+role integer,
+otp varchar(10),
+estimatedHours integer,
+totalUtilizedHours integer,
+docURL varchar(300),
+description varchar(300)
+);
+
+------------------------------------------------------------
+
+create table technology(
+technologyId integer primary key auto_increment,
+technologyName varchar(30),
+deleted boolean
+);
+
+------------------------------------------------------------
+
+create table status(
+statusId integer primary key auto_increment,
+status varchar(30)
+);
+
+------------------------------------------------------------
+
+create table module(
+moduleId integer primary key auto_increment,
+moduleName varchar(50),
+projectId integer,
+statusId integer,
+description varchar(300),
+docUrl varchar(512),
+estimatedHours integer,
+totalUtilizedHours integer
+);
+ 
+------------------------------------------------------------
+
+create table project(
+projectId integer primary key auto_increment,
+title varchar(50),
+description varchar(500),
+technologyId integer,
+estimatedHours integer,
+startDate varchar(20),
+complitionDate varchar(20),
+UtilizedHours integer,
+deleted boolean,
+statusId integer
+);
+ 
+------------------------------------------------------------
+
+create table project(
+projectId integer primary key auto_increment,
+title varchar(50),
+description varchar(500),
+technologyId integer,
+estimatedHours integer,
+startDate varchar(20),
+complitionDate varchar(20),
+UtilizedHours integer,
+deleted boolean,
+statusId integer
+);
+
+------------------------------------------------------------
+
+create table task(
+taskId integer primary key auto_increment,
+moduleId integer,
+projectId integer,
+statusId integer,
+estimatedHours integer,
+totalUtilizedHours integer,
+docURL varchar(300),
+description varchar(300)
+);
+
+------------------------------------------------------------
+
+create table task_user(
+taskUserId integer primary key auto_increment,
+userId integer,
+taskId integer,
+assignStatus integer,
+statusId integer,
+utilizedHours integer
+);
+
+------------------------------------------------------------
+
+create table project_user(
+projectUserId integer primary key auto_increment,
+userId integer,
+projectId integer,
+assignStatusId integer
+);
