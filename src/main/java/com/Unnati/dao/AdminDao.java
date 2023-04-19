@@ -58,7 +58,6 @@ public Integer getTotalPipeLine() {
 	 
 	public void updateImageUrl(ProfileBean profileBean) {
 		stmt.update("update users set imageurl=? where userId=?",profileBean.getImageurl(),profileBean.getUserId());
-		
 	}
 	
 	

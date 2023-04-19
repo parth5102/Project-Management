@@ -2,6 +2,8 @@ package com.Unnati.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,5 +58,13 @@ public class Task_UserController {
 		return "ListTask_User";
 	}
 	
+	  @GetMapping("/devtask") 
+	  public String devTask(HttpSession session,Model model) {
+	   UserBean user = (UserBean)session.getAttribute("user"); 
+	  List<Task_UserBean> devlist7 =task_UserDao.getDevAllTask(user.getUserId());
+	 model.addAttribute("devlist7",devlist7);
+	  return "DevTask";
+	  }
+	 
 	
 }

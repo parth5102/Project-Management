@@ -62,7 +62,9 @@
 												<td><%=md.getDescription()%></td>
 												<td><%=md.getEstimatedHours()%></td>
 												<td><%=md.getTotalUtilizedHours()%></td>
-													<td><a href="viewmodule?moduleId=<%=md.getModuleId()%>">View</a></td>
+													<td><a href="viewmodule?moduleId=<%=md.getModuleId()%>"><i class="bi bi-eye"></i></a>|
+													<a class="text-warning" href="uploadmodule?moduleId=<%=md.getModuleId()%>"><i class="bi bi-upload"></i></a>
+													</td>
 
 											</tr>
 											<%

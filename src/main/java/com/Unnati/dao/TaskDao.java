@@ -29,5 +29,6 @@ public class TaskDao {
 		List<TaskBean> list4 = stmt.query(selectQuery,new BeanPropertyRowMapper<TaskBean>(TaskBean.class));
 		return list4;
 	}
+	
 }
  

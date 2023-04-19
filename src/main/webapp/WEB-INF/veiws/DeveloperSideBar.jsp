@@ -95,8 +95,8 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="listtechnology">
-              <i class="bi bi-circle"></i><span>List Technology</span>
+            <a href="listdevtask">
+              <i class="bi bi-circle"></i><span>List Task</span>
             </a>
           </li>
           <li>

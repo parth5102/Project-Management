@@ -19,7 +19,7 @@ public class ModuleDao {
 		String insertQuery = "insert into module(moduleName,projectId,statusId,description,docURL,estimatedHours,totalUtilizedHours)"
 				+ "values (?,?,?,?,?,?,?)";
 		stmt.update(insertQuery,moduleBean.getModuleName(),moduleBean.getProjectId(),moduleBean.getStatusId(),
-				moduleBean.getDescription(),moduleBean.getDocURL(),moduleBean.getEstimatedHours(),moduleBean.getTotalUtilizedHours());
+				moduleBean.getDescription(),null,moduleBean.getEstimatedHours(),moduleBean.getTotalUtilizedHours());
 	}
 	
 	public List<ModuleBean> getAllModule(){
@@ -44,4 +44,11 @@ public class ModuleDao {
 		}
 		return moduleBean;
 	}
+
+	public void uploadImage(ModuleBean moduleBean) {
+		String uploadQuery = "update module set docURL = ? where moduleId=?";	
+		stmt.update(uploadQuery,moduleBean.getDocURL(),moduleBean.getModuleId());
+	}
+	
+	
 }

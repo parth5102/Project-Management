@@ -26,4 +26,11 @@ public class Task_UserDao {
 		List<Task_UserBean> list7=stmt.query(selectQuery, new BeanPropertyRowMapper<Task_UserBean>(Task_UserBean.class));
 		return list7;
 	}
+
+	public List<Task_UserBean> getDevAllTask(Integer userId) {
+		String selectQuery = "select p.title,t.assignstatus,s.status,t.utilizedHours from task_User t,users u, task ,project p,status s where t.taskId=task.taskId and task.projectId=p.projectId and t.statusId=s.statusId and t.userId=u.userId and u.userId=?";
+		List<Task_UserBean> devlist7 = stmt.query(selectQuery, new BeanPropertyRowMapper<>(Task_UserBean.class),new Object[] {userId});
+		return devlist7;
+	}
+	
 }

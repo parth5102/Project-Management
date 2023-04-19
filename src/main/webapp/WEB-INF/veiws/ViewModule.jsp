@@ -26,7 +26,7 @@
 
 		<section class="section">
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-10">
 
 					<div class="card">
 						<div class="card-body">
@@ -37,7 +37,7 @@
 %>
 
 	<b>module Id </b>:<%=moduleBean.getModuleId() %><br>
-	<b>Doc Url</b>: <img src="${moduleBean.docURL}">
+	<b>Doc Image</b>: <img height="500px" width="700px" src="${moduleBean.docURL}">
 	<br>
 
 								</div>

@@ -42,23 +42,7 @@ public class ModuleController {
 	
 	@PostMapping("/savemodule")
 	public String saveModule(ModuleBean moduleBean) {
-		System.out.println(moduleBean.getModuleId());
-		System.out.println(moduleBean.getDocFile().getOriginalFilename());
-		try {
-			File moduleDir = new File("C:\\Spring\\ProjectManagement\\src\\main\\resources\\static\\assets\\ModuleUrl",moduleBean.getModuleId()+"");
-			if(moduleDir.exists()== false) {
-				moduleDir.mkdir();
-			}
-			File file = new File(moduleDir,moduleBean.getDocFile().getOriginalFilename());
-			FileUtils.writeByteArrayToFile(file, moduleBean.getDocFile().getBytes());
-			moduleBean.setDocURL("assets/ModuleUrl/"+moduleBean.getModuleId()+"/"+moduleBean.getDocFile().getOriginalFilename());
-			
 		moduleDao.addModule(moduleBean);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		
 		return "redirect:/newmodule";
 		
 	}
@@ -77,6 +61,32 @@ public class ModuleController {
 		return "ViewModule";
 	}
 	
+	@GetMapping("/uploadmodule")
+	public String uploadModule(@RequestParam("moduleId")Integer moduleId, Model model) {
+		ModuleBean moduleBean = moduleDao.getModuleById(moduleId);
+		model.addAttribute("moduleBean",moduleBean);
+		return "Moduleurl";
+	}
+	@PostMapping("/savemoduleimage")
+	public String saveModuleImage(ModuleBean moduleBean) {
+		System.out.println(moduleBean.getModuleId());
+		System.out.println(moduleBean.getDocFile().getOriginalFilename());
+		try {
+			File moduleDir = new File("C:\\Spring\\ProjectManagement\\src\\main\\resources\\static\\assets\\ModuleUrl",moduleBean.getModuleId()+"");
+			if(moduleDir.exists()== false) {
+				moduleDir.mkdir();
+			}
+			File file = new File(moduleDir,moduleBean.getDocFile().getOriginalFilename());
+			FileUtils.writeByteArrayToFile(file, moduleBean.getDocFile().getBytes());
+			moduleBean.setDocURL("assets/ModuleUrl/"+moduleBean.getModuleId()+"/"+moduleBean.getDocFile().getOriginalFilename());
+			moduleDao.uploadImage(moduleBean);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return "redirect:/listmodule";
+	}/* &nbsp; */
 	
 	
 }

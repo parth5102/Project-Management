@@ -45,10 +45,10 @@
 											</tr>
 										</thead>
 										<%
-										List<Task_UserBean> list7 = (List<Task_UserBean>)request.getAttribute("list7");
+										List<Task_UserBean> devlist7 = (List<Task_UserBean>)request.getAttribute("devlist7");
 										%>
 										<tbody>
-											<% for(Task_UserBean tu:list7){ %>
+											<% for(Task_UserBean tu : devlist7){ %>
 											<tr>
 												<td><%=tu.getTitle()%></td>
 												<td><%=tu.getAssignStatus()%></td>
