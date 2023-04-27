@@ -3,6 +3,8 @@
 import java.io.File;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +30,10 @@ public class AdminController {
 	
 			
 		@GetMapping("/admindashboard")
-		public String adminDashboard(Model model) {
-			 
+		public String adminDashboard(Model model , HttpSession session) {
+			   UserBean user = (UserBean)session.getAttribute("user"); 
+
+			if(user.getRole()==1) {
 			Integer getTotalProjectYear = adminDao.getTotalProjectYear();
 			Integer getTotalProjectOnGoing = adminDao.getTotalProjectOnGoing();
 			Integer getTotalPipeLine = adminDao.getTotalPipeLine();
@@ -43,7 +47,11 @@ public class AdminController {
 			model.addAttribute("chartData",chartData);
 			
 			return "AdminDashboard";
-		}
+			}
+			else {
+				return "redirect:/login";
+			}
+			}
 		
 		@GetMapping("/myprofile")
 		public String myProfile(Model model) {
@@ -72,6 +80,24 @@ public class AdminController {
 			}
 			
 			return "redirect:/myprofile";
+		}
+		
+		@PostMapping("/changepassword")
+		public String changePassword(UserBean user,HttpSession session) {
+			UserBean u1 = (UserBean)session.getAttribute("user");
+			try{if(user.getPassword().equals(u1.getPassword())) {
+				userDao.changePassword(user);
+				
+			return "redirect:/login";
+			}
+			else {
+				return "redirect:/changepassword";
+			}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return "Login";
 		}
 	
 }

@@ -75,8 +75,14 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="listdevtask">
-              <i class="bi bi-circle"></i><span>My Task</span>
+            <a href="managerproject">
+              <i class="bi bi-circle"></i><span>My Project</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="listtask1">
+              <i class="bi bi-circle"></i><span>List Task</span>
             </a>
           </li>
         </ul>
@@ -95,9 +101,3 @@
     </ul>
 
   </aside>
-
-
-
-  
-    
-

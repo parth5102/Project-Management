@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<jsp:include page="AdminSideBar.jsp"></jsp:include>
+	<jsp:include page="ManagerSideBar.jsp"></jsp:include>
 
 	<main id="main" class="main">
 
@@ -71,7 +71,7 @@
 								</tbody>
 								</table>
 							<div class="icon" align="right">
-								<a href="newtask"><i class="bi bi-plus-circle-fill"></i> </a>
+								<a href="newtask1"><i class="bi bi-plus-circle-fill"></i> </a>
 								<div class="label">Add New Task</div>
 							</div>
 

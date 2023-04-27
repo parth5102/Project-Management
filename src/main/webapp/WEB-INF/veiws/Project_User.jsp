@@ -33,7 +33,7 @@
 	List<ProjectBean>  list2= (List<ProjectBean>)request.getAttribute("list2");
 	%>
 	<%
-	List<UserBean> list5 = (List<UserBean>)request.getAttribute("list5");
+	List<UserBean> managerlist = (List<UserBean>)request.getAttribute("managerlist");
 	%>
 	
 
@@ -42,7 +42,7 @@
 					<select name="userId" class="form-select">	
 					<option>---Select User---</option>
 					<%
-					for (UserBean us :list5) {
+					for (UserBean us :managerlist) {
 					%>
 					<option value="<%=us.getUserId()%>"><%=us.getFirstName()%></option>
 					<%} %>

@@ -2,6 +2,8 @@ package com.Unnati.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +33,8 @@ public class Project_UserController {
 	public String addProject_User(Model model) {
 		List<ProjectBean> list2 = projectDao.getAllProject();
 		model.addAttribute("list2",list2);
-		List<UserBean> list5 = userDao.getAllUser();
-		model.addAttribute("list5",list5);
+		List<UserBean> managerlist = userDao.getManager();
+		model.addAttribute("managerlist",managerlist);
 		return "Project_User";
 	}
 	
@@ -52,5 +54,13 @@ public class Project_UserController {
 		model.addAttribute("list5",list5);
 		return "ListProject_User";
 	}
+	
+	@GetMapping("/managerproject")
+	public String managerProject(Model model,HttpSession session) {
+		UserBean user = (UserBean)session.getAttribute("user");
+		model.addAttribute("managerproject",project_UserDao.getManagerProject(user.getUserId()));
+		return "ManagerProject";
+	}
+
 	
 }

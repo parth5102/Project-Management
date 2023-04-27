@@ -10,6 +10,7 @@ public class UserBean {
 	private String otp; 
 	private boolean deleted;
 	private String imageurl;
+	private String newpassword;
 	public Integer getUserId() {
 		return userId;
 	}
@@ -65,6 +66,13 @@ public class UserBean {
 	public void setImageurl(String imageurl) {
 		this.imageurl = imageurl;
 	}
+	public String getNewpassword() {
+		return newpassword;
+	}
+	public void setNewpassword(String newpassword) {
+		this.newpassword = newpassword;
+	}
+	
 	
 	
 	

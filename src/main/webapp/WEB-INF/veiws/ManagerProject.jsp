@@ -1,4 +1,6 @@
-<%@page import="com.Unnati.bean.Task_UserBean"%>
+<%@page import="com.Unnati.bean.UserBean"%>
+<%@page import="com.Unnati.bean.ProjectBean"%>
+<%@page import="com.Unnati.bean.Project_UserBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -38,27 +40,24 @@
 									<table id="project_UserTable" class="datatable" border="1">
 										<thead>
 											<tr>
-												<th scope="col">Task Name</th>
-												<th scope="col">Assign Status</th>
+												<th scope="col">Project Name</th>
 												<th scope="col">Status</th>
-												<th scope="col">Utilized Hours</th>
+												<th scope="col">Action</th>
 											</tr>
 										</thead>
 										<%
-										List<Task_UserBean> devlist7 = (List<Task_UserBean>)request.getAttribute("devlist7");
+										List<Project_UserBean> list2 = (List<Project_UserBean>)request.getAttribute("managerproject");
 										%>
 										<tbody>
-											<% for(Task_UserBean tu : devlist7){ %>
+											<% for(Project_UserBean p:list2){ %>
 											<tr>
-												<td><%=tu.getTitle()%></td>
-												<td><%=tu.getAssignStatus()%></td>
-												<td><%=tu.getStatus()%></td>
-												<td><%=tu.getUtilizedHours()%></td>
+												<td><%=p.getTitle()%></td>
+												<td><%=p.getAssignStatusId()%></td>
+												<td><a href="viewproject1?projectId=<%=p.getProjectId()%>">View</a></td>
 											</tr>
 											<%} %>
 										</tbody>
 									</table>
-									
 								</div>
 								
 							</div>

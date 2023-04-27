@@ -42,7 +42,7 @@
 
               <img src="${user.imageurl}" alt="Profile" class="rounded-circle">
               <h2>${user.firstName}</h2>
-              <h3>${user.role==1?"Admin":"Customer"}</h3>
+              <h3>${user.role==1?"Admin":" "}${user.role==2?"Manager":"Developer"}</h3>
 <!-- 
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -68,10 +68,6 @@
 
                 <li class="nav-item" role="presentation">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" role="tab" tabindex="-1">Edit Profile</button>
-                </li>
-
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings" aria-selected="false" role="tab" tabindex="-1">Settings</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
@@ -109,7 +105,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Role</div>
-                    <div class="col-lg-9 col-md-8">${user.role==1?"Admin":"Customer"}</div>
+                    <div class="col-lg-9 col-md-8">${user.role==1?"Admin":""}${user.role==1?"Manager":"Developer"}</div>
                   </div>
 
                   <!-- <div class="row">
@@ -154,49 +150,14 @@
 
                 <div class="tab-pane fade pt-3" id="profile-settings" role="tabpanel">
 
-                  <!-- Settings Form -->
-                  <form>
-
-                    <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                      <div class="col-md-8 col-lg-9">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="changesMade" checked="">
-                          <label class="form-check-label" for="changesMade">
-                            Changes made to your account
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="newProducts" checked="">
-                          <label class="form-check-label" for="newProducts">
-                            Information on new products and services
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="proOffers">
-                          <label class="form-check-label" for="proOffers">
-                            Marketing and promo offers
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="securityNotify" checked="" disabled="">
-                          <label class="form-check-label" for="securityNotify">
-                            Security alerts
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                  </form><!-- End settings Form -->
-
+                
                 </div>
 
                 <div class="tab-pane fade pt-3" id="profile-change-password" role="tabpanel">
                   <!-- Change Password Form -->
-                  <form>
+                  <form action="changepassword" method="post">
+                  
+                  <input name="userId" type="hidden" value="${user.userId}">
 
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>

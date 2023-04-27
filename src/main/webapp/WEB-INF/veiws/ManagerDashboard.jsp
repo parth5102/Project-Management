@@ -1,19 +1,18 @@
-<%@page import="com.Unnati.bean.ProjectChartBean"%>
+	<%@page import="com.Unnati.bean.ProjectChartBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+	pageEncoding="ISO-8859-1"%>
+
 <html>
 <head>
 <jsp:include page="AllHeader.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
 </head>
 
 <body>
 
-	<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
+	<jsp:include page="ManagerSideBar.jsp"></jsp:include>
 
 	<main id="main" class="main">
 
@@ -21,7 +20,7 @@
 			<h1>DashBoard</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="developerdashboard">Home</a></li>
+					<li class="breadcrumb-item"><a href="managerdashboard">Home</a></li>
 					<li class="breadcrumb-item active">DashBoard</li>
 				</ol>
 			</nav>
@@ -32,25 +31,25 @@
 			<div class="row">
 
 				<!-- Left side columns -->
-				<!--  Widget Start  -->
 				<div class="col-lg-12">
 					<div class="row">
 
 						<!-- Sales Card -->
 						<div class="col-xxl-3 col-md-3">
 							<div class="card info-card sales-card">
+
 								<div class="card-body">
 									<h5 class="card-title">
-										Total Task
+										Total Project
 									</h5>
 
 									<div class="d-flex align-items-center">
 										<div
 											class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-											<i class="bi bi-cart"></i>
+											<i class="bi bi-people"></i>
 										</div>
 										<div class="ps-3">
-											<h6>${getTotalTask}</h6>
+											<h6>${getTotalProjectYear}</h6>
 										</div>
 									</div>
 								</div>
@@ -64,16 +63,16 @@
 							<div class="card info-card revenue-card">
 								<div class="card-body">
 									<h5 class="card-title">
-										Running Task
+										Ongoing Project
 									</h5>
 
 									<div class="d-flex align-items-center">
 										<div
 											class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-											<i class="bi bi-currency-dollar"></i>
+											<i class="bi bi-people"></i>
 										</div>
 										<div class="ps-3">
-											<h6>${getTotalProgressTask}</h6>
+											<h6>${getTotalRunningProject}</h6>
 										</div>
 									</div>
 								</div>
@@ -92,10 +91,10 @@
 									<div class="d-flex align-items-center">
 										<div
 											class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-											<i class="bi bi-currency-dollar"></i>
+											<i class="bi bi-people"></i>
 										</div>
 										<div class="ps-3">
-											<h6>${getGivenHours}</h6>
+											<h6>${getUtilizedHours}</h6>
 										</div>
 									</div>
 								</div>
@@ -129,8 +128,8 @@
 
 						</div>
 						<!-- End Customers Card -->
-						
-												<!-- Reports -->
+
+						<!-- Reports -->
 				 <div class="col-12">
           <div class="card">
             <div class="card-body">
@@ -179,10 +178,10 @@
 									 '<%=pc.getMonth()%>',
 										<%}%>],
 								datasets : [ {
-									label : '# of Total Task',
+									label : '# of TotalProject',
 									data : [
 										<%for (ProjectChartBean pc : chartData) {%>
-												<%=pc.getTaskCount()%>,
+												<%=pc.getProjectCount()%>,
 										<%}%>
 										],
 										backgroundColor:bgColor
@@ -204,11 +203,10 @@
             </div>
           </div>
         </div>
-						<!-- End Reports -->
-						
-					</div>
+				<!-- End Reports -->
+
+										</div>
 				</div>
-				<!-- Widget Ends Here -->
 				<!-- End Left side columns -->
 
 			

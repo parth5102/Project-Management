@@ -106,4 +106,23 @@ public class UserDao {
 			return null;
 		}
 		
+		public List<UserBean> getManager() {
+			String selectQuery = "select * from users where role=2";
+			List<UserBean> managerlist = stmt.query(selectQuery, new BeanPropertyRowMapper<>(UserBean.class));
+			return managerlist;
+		}
+
+		public List<UserBean> getDeveloper() {
+			String selectQuery = "select * from users where role=3";
+			List<UserBean> developerlist = stmt.query(selectQuery, new BeanPropertyRowMapper<>(UserBean.class));
+			return developerlist;
+		}
+		
+		public void changePassword(UserBean user) {
+			String updateQuery="update users set password=? where userId=?";
+			stmt.update(updateQuery,user.getNewpassword(),user.getUserId());
+		}
+
+
+		
 }

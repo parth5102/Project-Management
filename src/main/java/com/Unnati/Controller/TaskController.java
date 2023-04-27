@@ -60,5 +60,29 @@ public class TaskController {
 		model.addAttribute("list4",list4);
 		return "ListTask";
 	}
+
+	@GetMapping("/newtask1")
+	public String newTask1(Model model) {
+		List<StatusBean> list1 =statusDao.getAllStatus();
+		model.addAttribute("list1",list1);
+		List<ProjectBean> list2 =projectDao.getAllProject();
+		model.addAttribute("list2",list2);
+		List<ModuleBean> list3 = moduleDao.getAllModule();
+		model.addAttribute("list3",list3);
+		return "NewTask1";
+	}
 	
+	@PostMapping("/savetask1")
+	public String saveTask1(TaskBean taskBean) {
+		taskDao.addTask(taskBean);
+		return "redirect:/newtask1";
+	}
+	
+	@GetMapping("/listtask1")
+	public String listTask1(Model model) {
+		List<TaskBean> list4 = taskDao.getAllTask();
+		model.addAttribute("list4",list4);
+		return "ListTask1";
+	}
+
 }

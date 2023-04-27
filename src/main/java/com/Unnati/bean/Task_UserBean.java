@@ -11,6 +11,8 @@ public class Task_UserBean {
 	private Integer statusId;
 	private String status;
 	private Integer utilizedHours;
+	private Integer estimatedHours;
+	private String assignDate;
 	public Integer getTaskUserId() {
 		return taskUserId;
 	}
@@ -65,6 +67,17 @@ public class Task_UserBean {
 	public void setUtilizedHours(Integer utilizedHours) {
 		this.utilizedHours = utilizedHours;
 	}
-	
+	public Integer getEstimatedHours() {
+		return estimatedHours;
+	}
+	public void setEstimatedHours(Integer estimatedHours) {
+		this.estimatedHours = estimatedHours;
+	}
+	public String getAssignDate() {
+		return assignDate;
+	}
+	public void setAssignDate(String assignDate) {
+		this.assignDate = assignDate;
+	}
 	
 }

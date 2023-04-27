@@ -67,4 +67,12 @@ public class ProjectController {
 		return "ViewProject";
 	}
 	
+	@GetMapping("/viewproject1")
+	public String viewProject1(@RequestParam("projectId")Integer projectId,Model model) {
+		ProjectBean projectBean = projectDao.getProjectById(projectId);
+		model.addAttribute("projectBean",projectBean);
+		return "ViewProject1";
+	}
+	
+		
 }

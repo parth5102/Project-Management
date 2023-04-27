@@ -36,7 +36,7 @@ public class Task_UserController {
 	
 	@GetMapping("/addtask_user")
 	public String addTask_User(Model model) {
-		List<UserBean> list5 = userDao.getAllUser();
+		List<UserBean> list5 = userDao.getDeveloper();
 		model.addAttribute("list5",list5);
 		List<TaskBean> list4 = taskDao.getAllTask();
 		model.addAttribute("list4",list4);

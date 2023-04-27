@@ -24,6 +24,34 @@ public class Project_UserDao {
 		List<Project_UserBean> list6 = stmt.query(selectQuery,new BeanPropertyRowMapper<Project_UserBean>(Project_UserBean.class));
 		return list6;
 	}
+	
+	public List<Project_UserBean> getManagerProject(Integer userId){
+		String selectQuery = "select p.title,pu.assignStatusId,pu.projectId from project p, project_user pu where pu.projectId=p.projectId and pu.userId = ?";
+		List<Project_UserBean> list6 = stmt.query(selectQuery, new BeanPropertyRowMapper<>(Project_UserBean.class),new Object[] {userId});
+		return list6;
+	}
+
+	public Integer getTotalProject(Integer userId) {
+		String countQuery = "select count(*) from project_user where userId=?";
+		return stmt.queryForObject(countQuery, Integer.class,new Object[] {userId});
+	}
+
+	public Integer getTotalRunningProject(Integer userId) {
+		String countQuery = "select count(*) from project_user where userId=? and  assignStatusId=1";
+		return stmt.queryForObject(countQuery,Integer.class,new Object[] {userId});
+	}
+
+	public Integer getEstimatedHours(Integer userId) {
+		String countQuery = "select sum(p.estimatedHours) from project p,project_user pu where pu.projectId=p.projectId and pu.userId=?";
+		return stmt.queryForObject(countQuery,Integer.class,new Object[] {userId});
+	}
+
+	public Integer getUtilizedHours(Integer userId) {
+		String countQuery = "select sum(p.utilizedHours) from project p,project_user pu where pu.projectId=p.projectId and pu.userId=?";
+		return stmt.queryForObject(countQuery, Integer.class,new Object[] {userId});
+	}
+	
+	
 
 
 }

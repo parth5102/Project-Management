@@ -60,5 +60,15 @@ public Integer getTotalPipeLine() {
 		stmt.update("update users set imageurl=? where userId=?",profileBean.getImageurl(),profileBean.getUserId());
 	}
 	
+	public List<ProjectChartBean> getTaskStats(Integer userId) {
+		String selectQuery = "select monthname(assignDate) as month , count(taskUserId) as taskCount from task_user where userId=? and year(assignDate) = 2023 group by monthname(assignDate),month(assignDate) order by month(assignDate)";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ProjectChartBean>(ProjectChartBean.class),new Object[] {userId});
+	}
+	
+	public List<ProjectChartBean> getMyProjectStats(Integer userId) {
+		String selectQuery = "select monthname(assignDate) as month , count(projectUserId) as projectCount from project_user where userId=? and year(assignDate) = 2023 group by monthname(assignDate),month(assignDate) order by month(assignDate)";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ProjectChartBean>(ProjectChartBean.class),new Object[] {userId});
+	}
+	
 	
 }
